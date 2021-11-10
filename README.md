@@ -46,3 +46,28 @@ kafka-console-consumer --topic example-topic --bootstrap-server broker:9092  --f
 ### 토픽 상세 조회 [브로커 CLI 접속 후]
 kafka-topics --bootstrap-server broker:9092 --describe --topic example-topic
 
+
+---------------------------
+# MySQL
+
+### MySQL CLI 접속
+docker exec -it mysql bash
+mysql -uroot -ptest
+
+### DB 생성 및 생성한 DB 사용
+CREATE DATABASE IF NOT EXISTS connect_test;
+USE connect_test;
+
+### 테이블 CREATE (예시)
+CREATE TABLE IF NOT EXISTS test (
+  id serial NOT NULL PRIMARY KEY,
+  name varchar(100),
+  email varchar(200),
+  department varchar(200),
+  modified timestamp default CURRENT_TIMESTAMP NOT NULL,
+  INDEX `modified_index` (`modified`)
+);
+
+### 데이터 INSERT (예시)
+INSERT INTO test (name, email, department) VALUES ('alice', 'alice@abc.com', 'engineering');
+INSERT INTO test (name, email, department) VALUES ('bob', 'bob@abc.com', 'sales');
