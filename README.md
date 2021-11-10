@@ -29,11 +29,11 @@ kafka-console-producer --topic example-topic --broker-list broker:9092
 docker-compose exec broker bash
 
 
-### 컨슈머 생성 (컨슈머: 데이터 받음)
+### 컨슈머 생성 (컨슈머: 데이터 받음) [브로커 CLI 접속 후]
 kafka-console-consumer --topic example-topic --bootstrap-server broker:9092
 
 
-### 토픽 내 데이터 확인
+### 토픽 내 데이터 확인 [브로커 CLI 접속 후]
 kafka-console-consumer --topic example-topic --bootstrap-server broker:9092  --from-beginning 
 
 """
@@ -43,4 +43,6 @@ kafka-console-consumer --topic example-topic --bootstrap-server broker:9092  --f
     출력 예시 : key1:value1
 """
 
+### 토픽 상세 조회 [브로커 CLI 접속 후]
+kafka-topics --bootstrap-server broker:9092 --describe --topic example-topic
 
